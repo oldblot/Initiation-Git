@@ -3,9 +3,10 @@ import csv
 import os
 
 ### config ##
-dataRepo = "/home/knn/"
+
+dataRepo = "/home/nicolas/NSI/Initiation-Git"
 dataFile = "iris.csv"
-get_nom = {0 : 'setosa', 1 : 'virginica', 2 : 'versicolor'}
+get_nom = {'0' : 'setosa', '1' : 'virginica', '2' : 'versicolor'}
 
 def readCSV(dossier:str, fichier:str) -> list :
     """
@@ -15,8 +16,6 @@ def readCSV(dossier:str, fichier:str) -> list :
     fic = os.path.join(dossier, fichier)
     with open(fic, mode = "r" , newline = '' , encoding='utf-8') as csvFile :
         reader = csv.DictReader(csvFile)
-        print(type(reader[0]), reader[0])
-        print(type(reader[1]), reader[1])
         lignes = [dict(ligne) for ligne in reader]
     return lignes
 
@@ -45,7 +44,7 @@ def trier(data:list, cle:str) -> None:
         while j >= 0 and data[j][cle] > a_trier:
             data[j+1] = data[j]
             j -= 1
-        data[j+1] = a_trier
+        data[j+1][cle] = a_trier
 
 
 def min(lst:list) -> int:
@@ -72,7 +71,7 @@ def knn(new_x, new_y, k):
     for fleur in voisins:
         count[fleur['species']] += 1
         if count[fleur['species']] > maximum:
-            espece_max = get_nom(fleur['species'])
+            espece_max = get_nom[fleur['species']]
             maximum = count[fleur['species']]
     return espece_max, maximum
 
@@ -85,3 +84,5 @@ def main(new_x, new_y, k):
 
     print("Le label le plus représenté est", espece)
     print("Il a atteint ", nb, "occurences sur les ", k, "possibles")
+
+main(1.5,0.5,5)
