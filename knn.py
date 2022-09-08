@@ -64,7 +64,7 @@ def knn(new_x, new_y, k):
     trier(fleurs,'distance')
     voisins = fleurs[:k]
 
-    count = {0 : 0, 1 : 0, 2 : 0} #cle 0 pour setosa etc ...
+    count = {"0" : 0, 1 : 0, "2" : 0} #cle 0 pour setosa etc ...
     espece_max = ''
     maximum = 0
 
