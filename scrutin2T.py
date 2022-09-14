@@ -4,7 +4,6 @@ def scrutin2():
     with open("tableauvote.csv", newline='',encoding='utf-8') as csvfile:
         tableau = csv.reader(csvfile, delimiter=",")
         tab = list(tableau)
-        liste = []
 
 #Premier tour
         for iden1 in range(len(tab[1])):
